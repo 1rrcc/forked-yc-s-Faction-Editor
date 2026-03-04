@@ -1,3 +1,11 @@
+v1.4.2
+- Add: Added age settings (min/max) in Kind Xenotype Editor, overriding faction group settings.
+- Add: Added warning dialog when selecting non-combatant xenotypes (e.g. Highmate), with option to force relax generation rules.
+- Fix: Fixed xenotype settings not applying in preview (NRE fix and null protection).
+- Fix: Fixed age settings not applying correctly during generation (parameter passing fix).
+- Update: Optimized layout of xenotype settings dialog.
+- feat: Enhance Batch Apply — selective category copy & cross-faction targeting
+
 v1.4.1
 - Added ability to edit xenotype for individual pawns.
 - Fixed an issue that made the search bar in the item library unusable.

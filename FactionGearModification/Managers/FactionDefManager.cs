@@ -42,19 +42,46 @@ namespace FactionGearCustomizer.Managers
         public static List<XenotypeChance> GetXenotypeChances(XenotypeSet set)
         {
             if (set == null) return null;
-            return xenotypeChancesField?.GetValue(set) as List<XenotypeChance>;
+            if (xenotypeChancesField == null)
+            {
+                // Re-attempt reflection if failed initially (e.g. if type wasn't fully loaded)
+                xenotypeChancesField = typeof(XenotypeSet).GetField("xenotypeChances", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (xenotypeChancesField == null)
+                {
+                    Log.ErrorOnce("[FactionGearCustomizer] Failed to reflect xenotypeChances field from XenotypeSet. Biotech features may not work.", 9128374);
+                    return null;
+                }
+            }
+            return xenotypeChancesField.GetValue(set) as List<XenotypeChance>;
+        }
+
+        public static void SetXenotypeChances(XenotypeSet set, List<XenotypeChance> chances)
+        {
+            if (set == null) return;
+            if (xenotypeChancesField == null)
+            {
+                // Re-attempt reflection
+                xenotypeChancesField = typeof(XenotypeSet).GetField("xenotypeChances", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (xenotypeChancesField == null) return;
+            }
+            xenotypeChancesField.SetValue(set, chances);
+        }
+
+        public static void EnsureXenotypeSetExists(FactionDef faction)
+        {
+            if (faction == null) return;
+            if (faction.xenotypeSet == null)
+            {
+                faction.xenotypeSet = new XenotypeSet();
+                // Ensure the list is initialized
+                SetXenotypeChances(faction.xenotypeSet, new List<XenotypeChance>());
+            }
         }
 
         public static List<XenotypeChance> GetOriginalXenotypeChances(FactionDef faction)
         {
             if (faction == null || !originalFactionData.ContainsKey(faction)) return null;
             return originalFactionData[faction].XenotypeChances;
-        }
-
-        public static void SetXenotypeChances(XenotypeSet set, List<XenotypeChance> chances)
-        {
-            if (set == null) return;
-            xenotypeChancesField?.SetValue(set, chances);
         }
 
         public static void ClearOriginalDataCache()

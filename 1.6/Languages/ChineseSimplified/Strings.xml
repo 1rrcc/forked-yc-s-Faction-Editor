@@ -1016,4 +1016,21 @@ https://github.com/yancy22737-sudo/FactionGearCustomizer
   <Validation_InsufficientParts>状态 '{0}' 可用部位不足：请求 {1} 个，可用 {2} 个</Validation_InsufficientParts>
   <Validation_TooManyImplantsForPart>部位 '{0}' 的植入物过多：请求 {1} 个，最大允许 {2} 个</Validation_TooManyImplantsForPart>
 
+  <!-- Age Settings -->
+  <AgeSettings>年龄设置</AgeSettings>
+  <AgeSettingsTooltip>设置此兵种生成时的生物学年龄范围。</AgeSettingsTooltip>
+  <MinAge>最小年龄</MinAge>
+  <MaxAge>最大年龄</MaxAge>
+  <AgeSettingsHint>留空则不限制。若与派系群组设置冲突，以此处为准。</AgeSettingsHint>
+
+  <!-- Non-Combatant Warning -->
+  <NonCombatantWarningText>警告：您选择的异种包含“非暴力”基因或无法作为战斗人员生成。
+  
+如果强制应用此异种，我们将自动放宽生成规则，允许生成无法暴力的 Pawn。这可能导致该兵种在战斗中毫无用处（如只会逃跑）。
+
+是否继续？</NonCombatantWarningText>
+  <Yes>是</Yes>
+  <No>否</No>
+  <DoNotShowAgain>不再提示</DoNotShowAgain>
+
 </LanguageData>
