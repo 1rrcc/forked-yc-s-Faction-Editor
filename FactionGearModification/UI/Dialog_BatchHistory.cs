@@ -3,8 +3,9 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using FactionGearCustomizer.Managers;
 
-namespace FactionGearCustomizer
+namespace FactionGearCustomizer.UI
 {
     public class Dialog_BatchHistory : Window
     {

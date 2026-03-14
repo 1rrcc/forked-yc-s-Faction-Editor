@@ -4,8 +4,9 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using FactionGearCustomizer.Managers;
 
-namespace FactionGearCustomizer
+namespace FactionGearCustomizer.UI
 {
     /// <summary>
     /// Flags indicating which gear categories to copy during batch apply.

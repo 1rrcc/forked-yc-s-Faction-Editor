@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using System.Linq;
-
-namespace FactionGearCustomizer
+using FactionGearCustomizer.UI;
+namespace FactionGearCustomizer.Managers
 {
     public class BatchApplyRecord
     {
